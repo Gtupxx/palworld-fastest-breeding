@@ -1,3 +1,4 @@
+import sys
 import json
 from collections import deque, defaultdict
 
@@ -83,9 +84,13 @@ def reverse_breeding_paths(start, target):
 
 
 if __name__ == "__main__":
-    # === 中文输入 ===
-    zh_start = input("请输入起始生物（中文名）：").strip()
-    zh_target = input("请输入目标生物（中文名）：").strip()
+    if len(sys.argv) != 3:
+        print("用法: BFS.py 起始生物 目标生物")
+        sys.exit(1)
+
+    # === 中文输入来自命令行参数 ===
+    zh_start = sys.argv[1].strip()
+    zh_target = sys.argv[2].strip()
 
     start = to_en(zh_start)
     target = to_en(zh_target)
@@ -96,7 +101,7 @@ if __name__ == "__main__":
     if paths:
         print(f"从『{zh_start}』到『{zh_target}』的最短配种链路如下：\n")
         for path in paths:
-            for p1, p2, child in path:
+            for p1, p2, child in path[::-1]:
                 print(f"{to_zh(p1)} + {to_zh(p2)} → {to_zh(child)}")
             print("-----------")
     else:
