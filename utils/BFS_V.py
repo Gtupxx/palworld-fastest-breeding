@@ -4,11 +4,11 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # === 加载配种表 ===
-with open('parents_en.json', 'r', encoding='utf-8') as f:
+with open('json/parents_en.json', 'r', encoding='utf-8') as f:
     breed_data = json.load(f)
 
 # === 加载中英文对照表 ===
-with open('zh_en_map.json', 'r', encoding='utf-8') as f:
+with open('json/zh_en_map.json', 'r', encoding='utf-8') as f:
     zh_en_map = json.load(f)
 
 en_zh_map = {v: k for k, v in zh_en_map.items()}
