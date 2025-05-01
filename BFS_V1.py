@@ -132,7 +132,15 @@ def render_breeding_graph(path):
                     ));""" for p, c in edges
                 )}
             }});
+
+            // 窗口大小变化时，更新连接线位置
             window.addEventListener('resize', () => {{
+                lines.forEach(line => line.position());
+            }});
+
+            // 监听滚动事件，更新连接线位置
+            const container = document.querySelector('.container');
+            container.addEventListener('scroll', () => {{
                 lines.forEach(line => line.position());
             }});
         </script>
@@ -143,6 +151,7 @@ def render_breeding_graph(path):
         height=300,
         scrolling=False,
     )
+
 
 
 # === Streamlit 页面 ===
