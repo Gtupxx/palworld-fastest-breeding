@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 80px;
+            padding: 20px;
+            overflow: auto;
+        }
+
+
+        .generation {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+
+        }
+
+
+        .node {
+
+            width: 100px;
+            text-align: center;
+
+        }
+
+
+        .node img {
+
+            width: 80px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            border: 2px solid #888;
+
+        }
+
+
+        .label {
+
+            margin-top: 5px;
+
+            font-size: 14px;
+
+        }
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/leader-line"></script>
+
+
+</head>
+
+
+<body>
+
+
+    <div class="container" id="container">
+
+        {CONTENT}
+
+    </div>
+
+
+
+    <script>
+
+
+        const edges = { EDGES };
+
+
+        window.onload = function () {
+
+
+            edges.forEach(e => {
+
+
+                new LeaderLine(
+
+                    document.getElementById(e.from),
+
+                    document.getElementById(e.to),
+
+                    {
+                        color: "#444",
+                        size: 2,
+                        path: "fluid",
+
+                        startSocket: "right",
+                        endSocket: "left",
+
+                        endPlug: "arrow3"
+
+                    }
+
+                );
+
+
+            });
+
+
+        };
+
+
+    </script>
+
+
+</body>
+
+
+</html>
